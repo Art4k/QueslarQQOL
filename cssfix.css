@@ -82,3 +82,7 @@ div.enchanting-action-item-info-rows.upper-border {overflow-y:auto!important;}
     background-color: #0000004f;
     padding-top: 10%;
 }
+
+ml-4 bd-highlight:last-child {
+  color: red;
+}

@@ -93,6 +93,10 @@ class FTGMod {
    QQOLholder.id = 'QQOL_holder';
    document.getElementById('profile-next-level').parentNode.insertBefore(QQOLholder,document.getElementById('profile-next-level').nextSibling);
 
+   let QQOLRelics = document.createElement('div');
+   QQOLRelics.id = 'QQOL_relics';
+   document.querySelector(".inventory-row").childNodes[3].querySelector("div").parentNode.insertBefore(QQOLRelics,document.querySelector(".inventory-row").childNodes[3].querySelector("div").nextSibling);
+
    let QQOLinfo = document.createElement('div');
    QQOLinfo.style.marginTop = '10px';
    QQOLinfo.id='QQOL_info';
@@ -104,11 +108,14 @@ class FTGMod {
 
    let timetoleveluptooltip = document.createElement('div');
    timetoleveluptooltip.id = 'QQOL_time_to_levelup';
+   let maxrelicincome = document.createElement('div');
+   maxrelicincome.id = 'QQOL_relic_max';
    let idletimeremainingtooltip = document.createElement('div');
    idletimeremainingtooltip.id='QQOL_remaining_time';
    document.getElementById('QQOL_holder').appendChild(QQOLinfo);
    document.getElementById('QQOL_holder').appendChild(idletimeremainingtooltip);
    document.getElementById('QQOL_holder').appendChild(timetoleveluptooltip);
+   document.getElementById('QQOL_relics').appendChild(maxrelicincome);
    document.getElementById('QQOL_holder').appendChild(QQOLquests);
 
    //DECLARE SHIT
@@ -153,6 +160,7 @@ class FTGMod {
  Update() {
    this.TimeRemaining();
    this.TimeToLevelUp();
+   this.RelicDrop();
    this.TimeToCraft();
    this.TrySearchProviderUI();
    this.TimeToQuestComplete();
@@ -285,6 +293,22 @@ class FTGMod {
     }
 
  }
+
+ RelicDrop() {
+  if (document.getElementById('profile-level')) {
+  let txt = document.querySelector("#profile-level > div").childNodes[1].innerHTML;
+  let getStringLevels = txt.replace(/\D/g,'');
+  let getLevel = parseInt(getStringLevels.substring(0, 4));
+  let maxRelic = (((350 *0.02) + 1) * 300 * ((getLevel * .0001) + 1));
+  let MinRelic = (((350 *0.02) + 1) * 150 * ((getLevel * .0001) + 1));
+  txt='Min: '+Math.round(MinRelic)+' | Max: '+Math.round(maxRelic);
+  if (document.getElementById('QQOL_relic_max'))
+   document.getElementById('QQOL_relic_max').innerHTML = txt;
+   }
+
+}
+
+
 
  TrySearchProviderUI() {
    if (document.querySelector('.cdk-column-username.mat-column-username')&&!(document.getElementById('QQOL_service_search'))) {
