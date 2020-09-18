@@ -86,7 +86,7 @@ class FTGMod {
    var csselem = document.createElement("link");
    csselem.setAttribute("rel", "stylesheet");
    csselem.setAttribute("type", "text/css");
-   csselem.setAttribute("href", "https://countto25.github.io/QueslarQQOL/cssfix.css");
+   csselem.setAttribute("href", "https://art4k.github.io/QueslarQQOL/cssfix.css");
    document.getElementsByTagName("head")[0].appendChild(csselem);
 
    let QQOLholder = document.createElement('div');
@@ -233,7 +233,7 @@ class FTGMod {
   if (Object.keys(this.gameData.playerActionService.actionResult).length!=0) {
     let exp = this.gameData.playerActionService.actionResult.income.experience.amount;
     let gold = this.gameData.playerActionService.actionResult.income.gold.amount;
-    infospan.innerHTML = `(<span class='QQOL-tooltip'>${(gold*600).toLocaleString()} gold and ${(exp*600).toLocaleString()} experience per hour<span class='QQOL-tooltiptext'>Unless you die</span></span>)`;
+    infospan.innerHTML = `(<span class='QQOL-tooltip'>${(gold*600).toLocaleString()} gold and ${(exp*600).toLocaleString()} experience per hour <span class='QQOL-tooltiptext'>Unless you die</span></span>)`;
   }
  }
 
@@ -481,7 +481,7 @@ class FTGMod {
   CheckLatestVersion() {
     let modbody = this;
     var request = new XMLHttpRequest();
-    request.open('GET', 'https://api.github.com/repos/countto25/queslarqqol/tags', true);
+    request.open('GET', 'https://api.github.com/repos/art4k/queslarqqol/tags', true);
     request.onload = function() {
       if (request.status >= 200 && request.status < 400) {
         var data = JSON.parse(request.responseText);
@@ -491,7 +491,7 @@ class FTGMod {
         console.log(modbody.ver);
         console.log(parseFloat(latestVersion) > parseFloat(modbody.ver));
         if ((parseFloat(latestVersion) > parseFloat(modbody.ver))) {
-          let txt = 'QQOL v'+modbody.ver+'. <a target="_blank" href="https://countto25.github.io/QueslarQQOL/" class="QQOL-link-action" style="color:red; text-decoration: none">Please update</a>';
+          let txt = 'QQOL v'+modbody.ver+'. <a target="_blank" href="https://art4k.github.io/QueslarQQOL" class="QQOL-link-action" style="color:red; text-decoration: none">Please update</a>';
           document.querySelector('#QQOL_info').innerHTML=txt;
         } else if (parseFloat(latestVersion) < parseFloat(modbody.ver)) {
           let txt = 'QQOL v'+modbody.ver+'. <span style="color:green; text-decoration: none">Maybe do your actual job?</span>';
