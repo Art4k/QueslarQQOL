@@ -299,8 +299,8 @@ class FTGMod {
   let txt = document.querySelector("#profile-level > div").childNodes[1].innerHTML;
   let getStringLevels = txt.replace(/\D/g,'');
   let getLevel = parseInt(getStringLevels.substring(0, 4));
-  let maxRelic = (((350 *0.02) + 1) * 300 * ((getLevel * .0001) + 1));
-  let MinRelic = (((350 *0.02) + 1) * 150 * ((getLevel * .0001) + 1));
+  let maxRelic = (((365 *0.02) + 1) * 300 * ((getLevel * .0001) + 1));
+  let MinRelic = (((365 *0.02) + 1) * 150 * ((getLevel * .0001) + 1));
   txt='Min: '+Math.round(MinRelic)+' | Max: '+Math.round(maxRelic);
   if (document.getElementById('QQOL_relic_max'))
    document.getElementById('QQOL_relic_max').innerHTML = txt;
